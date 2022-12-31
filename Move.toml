@@ -3,12 +3,12 @@ name = 'mingos_11_mint'
 version = '1.0.0'
 
 
-[dependencies.AptosToken]
+[dependencies.AptosFramework]
 git = 'https://github.com/aptos-labs/aptos-core.git'
-rev = 'main'
+rev = 'mainnet'
 subdir = 'aptos-move/framework/aptos-framework'
 
 [dependencies.AptosToken]
 git = 'https://github.com/aptos-labs/aptos-core.git'
-rev = 'main'
+rev = 'mainnet'
 subdir = 'aptos-move/framework/aptos-token'
