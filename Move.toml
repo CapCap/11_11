@@ -2,6 +2,8 @@
 name = 'mingos_11_mint'
 version = '1.0.0'
 
+[addresses]
+self = "0x1"
 
 [dependencies.AptosFramework]
 git = 'https://github.com/aptos-labs/aptos-core.git'
