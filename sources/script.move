@@ -53,13 +53,15 @@ script {
         // Can put `script_runner` here just so we can get it to compile
         let token_signer: &signer = some_contract::get_token_signer(script_runner);
 
-
         let token_owner_address = signer::address_of(script_runner);
 
         let nft_maximum: u64 = 1;
 
         let collection_name = string::utf8(COLLECTION_NAME);
         let description = string::utf8(b"");
+        let burnable_name = string::utf8(BURNABLE_BY_CREATOR);
+        let burnable_true = property_map::create_property_value(&true);
+        let special_name = string::utf8(SPECIAL_PROPERTY_NAME);
 
         while (!std::vector::is_empty(&token_names)) {
             let token_name = std::string::utf8(std::vector::pop_back(&mut token_names));
@@ -71,7 +73,6 @@ script {
             // Burn the token, hacky style
             let property_version = 0;
 
-
             let token_id = token::create_token_id_raw(
                 signer::address_of(token_signer),
                 collection_name,
@@ -79,8 +80,6 @@ script {
                 property_version,
             );
 
-            let burnable_name = string::utf8(BURNABLE_BY_CREATOR);
-            let burnable_true = property_map::create_property_value(&true);
 
             let property_keys: vector<String> = vector[burnable_name];
             let property_values: vector<vector<u8>> = vector[property_map::borrow_value(&burnable_true)];
@@ -114,7 +113,6 @@ script {
             // Create the TokenData + mint the token
             // Set up the NFT
 
-            let collection_name = string::utf8(COLLECTION_NAME);
             // TODO: is this correct?
 
             // tokan max mutable: true
@@ -126,7 +124,6 @@ script {
                 &vector<bool>[ true, true, true, true, true ]
             );
 
-            let special_name = string::utf8(SPECIAL_PROPERTY_NAME);
             let special_value = property_map::create_property_value(&token_name);
 
             let property_keys: vector<String> = vector[special_name];
