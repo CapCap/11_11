@@ -16,6 +16,7 @@ script {
 
 
     fun main(script_runner: &signer) {
+        // TODO: are these right?
         let token_names = vector [
             b"the caesar",
             b"the chart",
